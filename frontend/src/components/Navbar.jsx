@@ -1,20 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
-
+// Styled Components
 const NavContainer = styled.div`
     width: 100%;
     padding: 5rem;
 `
 
-const Nav = styled.div`
+const Nav = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 `
 
-const NavSection = styled.div`
+const NavSection = styled(motion.div)`
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -47,19 +47,44 @@ const MobileNav = styled.div`
     
 `
 
+// Variants
+
+const NavVariant = {
+    hidden: {
+        y: -100,
+        opacity: 0,
+    },
+
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { 
+            duration: 1,
+            staggerChildren: .5,
+        }
+    }
+}
 
 
 const Navbar = () => {
     return(
         <NavContainer>
-            <Nav>
-                <NavSection>
+            <Nav
+                variants= { NavVariant }
+                initial= 'hidden'
+                animate= 'show'
+            >
+                <NavSection
+                    variants= { NavVariant }
+                >
                     <LogoContainer>
                         <Logo> Mills Heating & AC </Logo>
                     </LogoContainer>
                 </NavSection>
 
-                <NavSection>
+                <NavSection
+                    variants= { NavVariant }
+                >
                     <NavItems>
                         <NavLink> Heating </NavLink>
                         <NavLink> Air Conditioning </NavLink>
