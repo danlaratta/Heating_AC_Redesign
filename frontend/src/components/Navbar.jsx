@@ -25,9 +25,9 @@ const LogoContainer = styled.div`
 `
 
 const Logo = styled.span`
-    color: var(--blue);
+    color: #fff;
     font-size: 3rem;
-
+    font-family: 'Lato', sans-serif;
 `
 
 const NavItems = styled.ul`
@@ -39,8 +39,9 @@ const NavItems = styled.ul`
 `
 
 const NavLink = styled.li`
-    color: var(--blue);
+    color: #fff;
     font-size: 2.3rem;
+    font-family: 'Lato', sans-serif;
 `
 
 const MobileNav = styled.div`
@@ -88,7 +89,7 @@ const Navbar = () => {
                     <NavItems>
                         <NavLink> Heating </NavLink>
                         <NavLink> Air Conditioning </NavLink>
-                        <NavLink> Service </NavLink>
+                        <NavLink> Services </NavLink>
                         <NavLink> Contact Us </NavLink>
                     </NavItems>
                 </NavSection>
