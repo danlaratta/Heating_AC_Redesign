@@ -1,6 +1,7 @@
 import './App.css'
 import Home from "./pages/Home"
 import Navbar from './components/Navbar'
+import Heating from './pages/Heating';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
 
       <Home />
+      {/* <Heating /> */}
     </div>
   );
 }

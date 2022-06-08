@@ -5,7 +5,10 @@ import { motion } from 'framer-motion'
 // Styled Components
 const NavContainer = styled.div`
     width: 100%;
-    padding: 5rem;
+    z-index: 3;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 2rem;
 `
 
 const Nav = styled(motion.div)`
