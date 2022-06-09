@@ -3,6 +3,9 @@ import styled  from 'styled-components'
 import { motion } from 'framer-motion'
 import LandingImg from '../images/landing-img.jpg'
 import InfoCard from '../components/InfoCard'
+import Info1 from '../images/info1.jpg'
+import Info2 from '../images/info2.jpg'
+import Info3 from '../images/info3.webp'
 
 // Styled Components
 const Container = styled.div`
@@ -65,10 +68,15 @@ const LandingImage = styled.div`
 
 const InfoContainer = styled.div`
     height: 100vh;
+    width: 100%;
 `
 
 const Cards = styled.div`
-    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
 `
 
 // Variants
@@ -89,6 +97,25 @@ const OverlayVariant = {
 }
 
 const Home = () => {
+
+    const carData = [
+        {
+            infoImg: {Info1},
+            infoTitle: 'HVAC Services and Products',
+            infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
+        },
+        {
+            infoImg: {Info2},
+            infoTitle: 'HVAC Services and Products',
+            infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
+        },
+        {
+            infoImg: {Info3},
+            infoTitle: 'HVAC Services and Products',
+            infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
+        }
+    ]
+
     return(
         <Container>
             <OverlayContainer>
@@ -111,6 +138,8 @@ const Home = () => {
 
             <InfoContainer>
                 <Cards>
+                    <InfoCard infoImg={''} infoTitle={''} infoDesc={''} />
+                    <InfoCard />
                     <InfoCard />
                 </Cards>
             </InfoContainer>

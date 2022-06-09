@@ -4,9 +4,10 @@ import { motion } from 'framer-motion'
 import Info1 from '../images/info1.jpg'
 
 const Container = styled.div`
-    height: 100vh;
     width: 100%;
-    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 const Card = styled.div`
@@ -14,8 +15,10 @@ const Card = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
-    border: .2rem solid black;
+    width: 60%;
+    /* border: .3rem solid #eaeaea; */
+    /* box-shadow: -.5rem 1rem 1rem #bdbcbc;
+    border-radius: 1rem; */
 `
 
 const CardItem = styled.div`
@@ -31,15 +34,20 @@ const InfoImage = styled.img`
 `
 
 const InfoText = styled.div`
-    
+    padding: 1.8rem;
 `
 
 const Title = styled.h1`
-    
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    padding-bottom: 1rem;
 `
 
 const Desc = styled.p`
-    
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
 `
 
 const InfoCard = () => {
