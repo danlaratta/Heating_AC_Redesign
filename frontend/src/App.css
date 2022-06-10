@@ -12,7 +12,8 @@ html{
 }
 
 :root{
-  --blue: #2a5196;
+  --blue: rgb(42, 81, 150);
+  --fadedBlue: rgba(42, 81, 150, 0.8);
   --gold: #efcf18;
 }
 

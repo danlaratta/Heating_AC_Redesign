@@ -1,17 +1,26 @@
 import './App.css'
-import Home from "./pages/Home"
 import Navbar from './components/Navbar'
-import Heating from './pages/Heating';
+import Home from './pages/Home'
+import Heating from './pages/Heating'
+import AirConditioning from './pages/AirConditioning'
+import Services from './pages/Services'
+import Contact from './pages/Contact'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Navbar />
 
-      <Home />
-      {/* <Heating /> */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/Heating' element={<Heating />} />
+        <Route path='/Air_Conditioning' element={<AirConditioning />} />
+        <Route path='/Services' element={<Services />} />
+        <Route path='/Contact' element={<Contact />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

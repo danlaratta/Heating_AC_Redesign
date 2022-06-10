@@ -5,7 +5,7 @@ import LandingImg from '../images/landing-img.jpg'
 import InfoCard from '../components/InfoCard'
 import Info1 from '../images/info1.jpg'
 import Info2 from '../images/info2.jpg'
-import Info3 from '../images/info3.webp'
+import Info3 from '../images/info3.jpg'
 
 // Styled Components
 const Container = styled.div`
@@ -71,12 +71,26 @@ const InfoContainer = styled.div`
     width: 100%;
 `
 
+const CardSection = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+const CardsContainer = styled.div`
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+
 const Cards = styled.div`
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 5%;
+    justify-content: center;
 `
 
 // Variants
@@ -98,21 +112,21 @@ const OverlayVariant = {
 
 const Home = () => {
 
-    const carData = [
+    const cardData = [
         {
-            infoImg: {Info1},
+            infoImg: Info1,
             infoTitle: 'HVAC Services and Products',
             infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
         },
         {
-            infoImg: {Info2},
-            infoTitle: 'HVAC Services and Products',
-            infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
+            infoImg: Info2,
+            infoTitle: 'Heating and Air Services',
+            infoDesc: "Mills Heating & Air Conditioning is a privately owned and operated business with 30 years of experience. We're fully licensed and insured. Rely on us for the highest quality HVAC products and services."
         },
         {
-            infoImg: {Info3},
-            infoTitle: 'HVAC Services and Products',
-            infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
+            infoImg: Info3,
+            infoTitle: 'Meeting All Your HVAC Needs',
+            infoDesc: "Your satisfaction is our priority. Not only do we install heating or air conditioning unit but also fix any problem that might arise with it. We're an authorized Carrier and Arcoaire HVAC product dealer."
         }
     ]
 
@@ -137,11 +151,16 @@ const Home = () => {
             <LandingImage> </LandingImage>
 
             <InfoContainer>
-                <Cards>
-                    <InfoCard infoImg={''} infoTitle={''} infoDesc={''} />
-                    <InfoCard />
-                    <InfoCard />
-                </Cards>
+                <CardSection>
+                    <CardsContainer>
+                        {cardData.map((data, key) => 
+                            <Cards>
+                                <InfoCard infoImg={data.infoImg} infoTitle={data.infoTitle} infoDesc={data.infoDesc} />
+                            </Cards>
+                        )}
+                    </CardsContainer>
+                </CardSection>
+
             </InfoContainer>
         </Container>
     )

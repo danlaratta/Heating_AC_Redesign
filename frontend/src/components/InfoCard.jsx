@@ -1,40 +1,33 @@
 import React from 'react'
 import styled  from 'styled-components'
 import { motion } from 'framer-motion'
-import Info1 from '../images/info1.jpg'
 
-const Container = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+
 
 const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 60%;
-    /* border: .3rem solid #eaeaea; */
-    /* box-shadow: -.5rem 1rem 1rem #bdbcbc;
+    width: 85%;
+    /* border: .3rem solid #eaeaea;
+    box-shadow: -.5rem 1rem 1.4rem #bdbcbc;
     border-radius: 1rem; */
 `
 
-const CardItem = styled.div`
-    
-`
+const CardItem = styled.div` `
 
 const ImageOverlay = styled.div`
-    
+    border-radius: 1rem;
 `
 
 const InfoImage = styled.img`
     width: 100%;
+    /* border-radius: 1rem 1rem 0rem 0rem; */
 `
 
 const InfoText = styled.div`
-    padding: 1.8rem;
+    padding: 2.5rem 2rem;
 `
 
 const Title = styled.h1`
@@ -42,35 +35,35 @@ const Title = styled.h1`
     font-family: 'Lato', sans-serif;
     font-size: 2.6rem;
     font-weight: 800;
+    color: var(--blue);
     padding-bottom: 1rem;
 `
 
 const Desc = styled.p`
     font-family: 'Lato', sans-serif;
     font-size: 1.6rem;
+    line-height: 2.5rem;
 `
 
-const InfoCard = () => {
+const InfoCard = ({ infoImg, infoTitle, infoDesc }) => {
     return (
-        <Container>
-            <Card>
-                <CardItem>
-                    <ImageOverlay> 
+        <Card>
+            <CardItem>
+                <ImageOverlay> 
 
-                    </ImageOverlay>
+                </ImageOverlay>
 
-                    <InfoImage src={Info1} /> 
-                </CardItem>
+                <InfoImage src={ infoImg } /> 
+            </CardItem>
 
-                <CardItem>
-                    <InfoText>
-                        <Title> HVAC Services and Products </Title>
+            <CardItem>
+                <InfoText>
+                    <Title> { infoTitle } </Title>
 
-                        <Desc> Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable. </Desc>
-                    </InfoText>
-                </CardItem>
-            </Card>
-        </Container>
+                    <Desc> { infoDesc } </Desc>
+                </InfoText>
+            </CardItem>
+        </Card>
     )
 }
 

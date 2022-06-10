@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+
 
 // Styled Components
 const NavContainer = styled.div`
     width: 100%;
     z-index: 3;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0);
     padding: 2rem;
+    background-color: ${props => props.bgColor ? 'var(--fadedBlue)' : 'rgba(0, 0, 0, 0)'};
+    
 `
 
 const Nav = styled(motion.div)`
@@ -27,10 +30,15 @@ const LogoContainer = styled.div`
     
 `
 
-const Logo = styled.span`
+const Logo = styled(Link)`
     color: #fff;
     font-size: 3rem;
     font-family: 'Lato', sans-serif;
+    text-decoration: none;
+
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 const NavItems = styled.ul`
@@ -41,10 +49,17 @@ const NavItems = styled.ul`
     justify-content: space-evenly;
 `
 
-const NavLink = styled.li`
+const NavLink = styled(motion.a)`
     color: #fff;
     font-size: 2.3rem;
     font-family: 'Lato', sans-serif;
+    text-decoration: none;
+
+    &:hover{
+        color: var(--gold);
+        cursor: pointer;
+        transform: scale(1.1);
+    }
 `
 
 const MobileNav = styled.div`
@@ -69,10 +84,26 @@ const NavVariant = {
     }
 }
 
-
 const Navbar = () => {
+
+    // State Variables
+    const [ navBg, setNavBg] = useState(false)
+
+    // Functions
+    const changeNavBG = () => {
+        if(window.scrollY >= 80){
+            setNavBg(true)
+        }
+        else{
+            setNavBg(false)
+        }
+    }
+
+    // Event Listeners
+    window.addEventListener('scroll', changeNavBG)
+
     return(
-        <NavContainer>
+        <NavContainer bgColor={navBg}>
             <Nav
                 variants= { NavVariant }
                 initial= 'hidden'
@@ -82,7 +113,7 @@ const Navbar = () => {
                     variants= { NavVariant }
                 >
                     <LogoContainer>
-                        <Logo> Mills Heating & AC </Logo>
+                        <Logo to='/'> Mills Heating & AC </Logo>
                     </LogoContainer>
                 </NavSection>
 
@@ -90,10 +121,10 @@ const Navbar = () => {
                     variants= { NavVariant }
                 >
                     <NavItems>
-                        <NavLink> Heating </NavLink>
-                        <NavLink> Air Conditioning </NavLink>
-                        <NavLink> Services </NavLink>
-                        <NavLink> Contact Us </NavLink>
+                        <NavLink to='/Heating'> Heating </NavLink>
+                        <NavLink to='/Air_Conditioning'> Air Conditioning </NavLink>
+                        <NavLink to='/Services'> Services </NavLink>
+                        <NavLink to='/Contact'> Contact Us </NavLink>
                     </NavItems>
                 </NavSection>
             </Nav>
