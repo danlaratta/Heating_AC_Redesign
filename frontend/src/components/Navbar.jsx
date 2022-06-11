@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 // Styled Components
@@ -10,7 +10,7 @@ const NavContainer = styled.div`
     z-index: 3;
     position: fixed;
     padding: 2rem;
-    background-color: ${props => props.bgColor ? 'var(--fadedBlue)' : 'rgba(0, 0, 0, 0)'};
+    background-color: ${props => props.bgColor ? 'var(--blue)' : 'rgba(0, 0, 0, 0)'};
     
 `
 
@@ -30,7 +30,7 @@ const LogoContainer = styled.div`
     
 `
 
-const Logo = styled(Link)`
+const Logo = styled(NavLink)`
     color: #fff;
     font-size: 3rem;
     font-family: 'Lato', sans-serif;
@@ -49,7 +49,11 @@ const NavItems = styled.ul`
     justify-content: space-evenly;
 `
 
-const NavLink = styled(motion.a)`
+const LinkContainer = styled(motion.span)`
+    
+`
+
+const NavLinks = styled(NavLink)`
     color: #fff;
     font-size: 2.3rem;
     font-family: 'Lato', sans-serif;
@@ -61,6 +65,7 @@ const NavLink = styled(motion.a)`
         transform: scale(1.1);
     }
 `
+
 
 const MobileNav = styled.div`
     
@@ -121,10 +126,10 @@ const Navbar = () => {
                     variants= { NavVariant }
                 >
                     <NavItems>
-                        <NavLink to='/Heating'> Heating </NavLink>
-                        <NavLink to='/Air_Conditioning'> Air Conditioning </NavLink>
-                        <NavLink to='/Services'> Services </NavLink>
-                        <NavLink to='/Contact'> Contact Us </NavLink>
+                        <LinkContainer> <NavLinks to='/Heating'> Heating </NavLinks> </LinkContainer>
+                        <LinkContainer> <NavLinks to='/Air_Conditioning'> Air Conditioning  </NavLinks> </LinkContainer>
+                        <LinkContainer> <NavLinks to='/Services'> Services </NavLinks> </LinkContainer>
+                        <LinkContainer> <NavLinks to='/Contact'> Contact Us  </NavLinks> </LinkContainer>
                     </NavItems>
                 </NavSection>
             </Nav>

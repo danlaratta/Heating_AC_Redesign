@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled  from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import LandingImg from '../images/landing-img.jpg'
 import InfoCard from '../components/InfoCard'
 import Info1 from '../images/info1.jpg'
@@ -76,9 +77,10 @@ const CardSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 6rem;
 `
 
-const CardsContainer = styled.div`
+const CardsContainer = styled(motion.div)`
     width: 65%;
     display: flex;
     align-items: center;
@@ -86,7 +88,7 @@ const CardsContainer = styled.div`
 `
 
 
-const Cards = styled.div`
+const Cards = styled(motion.div)`
     width: 100%;
     display: flex;
     align-items: center;
@@ -110,6 +112,28 @@ const OverlayVariant = {
     }
 }
 
+const CardsContainerVariants = {
+    hidden: { opacity: 0 },
+
+    show: {
+        opacity: 1,
+        transition: { staggerChildren: 0.8 }
+    } 
+}
+
+const CardsVariants = {
+    hidden: {
+        opacity: 0,
+        y: 100
+    },
+
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {  duration: 1}
+    } 
+}
+
 const Home = () => {
 
     const cardData = [
@@ -129,6 +153,16 @@ const Home = () => {
             infoDesc: "Your satisfaction is our priority. Not only do we install heating or air conditioning unit but also fix any problem that might arise with it. We're an authorized Carrier and Arcoaire HVAC product dealer."
         }
     ]
+
+    const controls = useAnimation()
+
+    const [ref, inView] = useInView()
+    
+    useEffect(() => {
+        if(inView){
+            controls.start('show')
+        }
+    }, [controls, inView])
 
     return(
         <Container>
@@ -152,9 +186,16 @@ const Home = () => {
 
             <InfoContainer>
                 <CardSection>
-                    <CardsContainer>
+                    <CardsContainer
+                        variants={ CardsContainerVariants }
+                        initial= 'hidden'
+                        animate= {controls}
+                        ref={ref}
+                    >
                         {cardData.map((data, key) => 
-                            <Cards>
+                            <Cards
+                                variants={ CardsVariants }
+                            >
                                 <InfoCard infoImg={data.infoImg} infoTitle={data.infoTitle} infoDesc={data.infoDesc} />
                             </Cards>
                         )}
