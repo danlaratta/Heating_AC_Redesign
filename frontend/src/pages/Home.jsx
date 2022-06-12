@@ -17,7 +17,8 @@ const OverlayContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: var(--blueOverlay);
+    /* background-color: rgba(0, 0, 0, 0.55); */
 `
 
 const Overlay = styled(motion.div)`

@@ -26,7 +26,6 @@ const CardItem = styled.div`
 
 const ImageOverlay = styled(NavLink)`
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     left: 0;
     top: 0;
@@ -35,7 +34,8 @@ const ImageOverlay = styled(NavLink)`
 
     &:hover{
         opacity: 1;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: var(--blueOverlay);
+        /* background-color: rgba(0, 0, 0, 0.7); */
         border-radius: 1rem 1rem 0rem 0rem;
         display: flex;
         align-items: center;

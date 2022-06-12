@@ -6,6 +6,7 @@ import AirConditioning from './pages/AirConditioning'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import { Routes, Route } from 'react-router-dom'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path='/Services' element={<Services />} />
         <Route path='/Contact' element={<Contact />} />
       </Routes>
+
+      <Footer />
     </div>
   )
 }
