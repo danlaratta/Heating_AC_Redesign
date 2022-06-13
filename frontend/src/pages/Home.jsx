@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled  from 'styled-components'
+import { NavLink } from 'react-router-dom'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import LandingImg from '../images/landing-img.jpg'
@@ -43,6 +44,19 @@ const Title = styled(motion.h1)`
     font-weight: 900;
     padding-bottom: 4rem;
 `
+
+/*
+const ServicesLink = styled(motion.NavLink)`
+    color: #000;
+    font-size: 1.8rem;
+    background-color: var(--gold);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-left: 15%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+`
+*/
 
 const ServicesLink = styled(motion.span)`
     color: #000;
@@ -96,6 +110,41 @@ const Cards = styled(motion.div)`
     align-items: center;
     justify-content: center;
 `
+const ServiceAreaContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const SectionTitle = styled.div`
+    font-size: 4rem;
+`
+
+const LocationContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+`
+
+const LocationItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+
+
+const LocationText = styled.span`
+    font-size: 2rem;
+`
+
+
+
 
 // Variants
 const OverlayVariant = {
@@ -162,6 +211,13 @@ const Home = () => {
         }
     ]
 
+    const locations = [
+        'Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant',
+        'Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake', 
+        'Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights', 
+        'Ortley Beach', 'Island Heights',  'Toms River',
+    ]
+
     const controls = useAnimation()
 
     const [ref, inView] = useInView()
@@ -186,7 +242,8 @@ const Home = () => {
                         Efficient and Reliable HVAC Installation <br/> and Maintenance Services
                     </Title>
 
-                    <ServicesLink variants= { OverlayVariant }> Get Serviced </ServicesLink>
+                    <ServicesLink to='/Services' > Get Serviced </ServicesLink>
+                    {/* <ServicesLink to='/Services' variants= { OverlayVariant }> Get Serviced </ServicesLink> */}
                 </Overlay>
             </OverlayContainer>
 
@@ -209,6 +266,19 @@ const Home = () => {
                         )}
                     </CardsContainer>
                 </CardSection>
+
+                <ServiceAreaContainer>
+                    <SectionTitle> We Service the Following Locations: </SectionTitle>
+
+                    <LocationContainer>
+                        <LocationItem>
+                            {locations.map((location, key) => 
+                                <LocationText> {location} </LocationText>
+                            )}
+                        </LocationItem>
+                    </LocationContainer>
+
+                </ServiceAreaContainer>
 
             </InfoContainer>
         </Container>

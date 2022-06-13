@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import { NavLink } from 'react-router-dom'
 import { FaFacebook } from "react-icons/fa"
 import { AiFillTwitterCircle } from "react-icons/ai"
 import { FaGooglePlus } from "react-icons/fa"
 
+
+// Styled Components
 const Container = styled.div`
     width: 100%;
     background-color: var(--blue);
     padding: 4rem;
 `
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.span`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,7 +24,7 @@ const FooterContainer = styled.div`
     gap: 5rem;
 `
 
-const FooterSocial = styled.span`
+const FooterSocial = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,18 +66,17 @@ const TwitterIcon = styled(AiFillTwitterCircle)`
     font-size: 3.8rem;
 `
 
-const SocialLink = styled.span`
-    
-`
+const SocialLink = styled.span` `
 
-const FooterInfo = styled.span`
+const FooterInfo = styled(motion.div)`
     width: 85%;
+    padding-top: 2rem;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
 `
 
-const FooterItem = styled.div`
+const FooterItem = styled(motion.div)`
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -113,28 +115,66 @@ const DetailText = styled.span`
     font-family: 'Lato', sans-serif;
 `
 
-const DetailMsg = styled.span`
-    color: #fff;
-    font-size: 1.2rem;
-    font-family: 'Lato', sans-serif;
-    display: inline-block;
-`
-
 const ServiceLinks = styled(NavLink)`
     color: #fff;
     font-size: 1.6rem;
     font-family: 'Lato', sans-serif;
     text-decoration: none;
+
+    &:hover{
+        color: var(--gold);
+    }
 `
 
+// Variants
+const SocialVariant = {
+    hidden: { 
+        opacity: 0,
+        y: -100, 
+    },
 
+    show:{
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, delay: 0.2}
+    }
+}
+
+const FooterInfoVariant = {
+    hidden: { 
+        opacity: 0,
+        y: -100, 
+    },
+
+    show:{
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, staggerChildren: 0.5, delayChildren: .8}
+    }
+}
 
 
 const Footer = () => {
+
+    const controls = useAnimation()
+
+    const [ref, inView] = useInView()
+    
+    useEffect(() => {
+        if(inView){
+            controls.start('show')
+        }
+    }, [controls, inView])
+
     return (
         <Container>
             <FooterContainer>
-                <FooterSocial>
+                <FooterSocial
+                    variants= { SocialVariant }
+                    initial= 'hidden'
+                    animate= {controls}
+                    ref={ref}
+                >
                     <Logo to='/'> Mills Heating & AC </Logo>
 
                     <SocialContainer>
@@ -144,8 +184,13 @@ const Footer = () => {
                     </SocialContainer>
                 </FooterSocial>
 
-                <FooterInfo>
-                    <FooterItem>
+                <FooterInfo
+                    variants= { FooterInfoVariant }
+                    initial= 'hidden'
+                    animate= {controls}
+                    ref={ref}
+                >
+                    <FooterItem variants= { FooterInfoVariant }>
                         <ItemContainer>
                             <Title> Contact </Title>
 
@@ -157,7 +202,7 @@ const Footer = () => {
                         </ItemContainer>
                     </FooterItem>
 
-                    <FooterItem>
+                    <FooterItem variants= { FooterInfoVariant }>
                         <ItemContainer>
                             <Title> Services </Title>
 
@@ -169,7 +214,7 @@ const Footer = () => {
                         </ItemContainer>
                     </FooterItem>
 
-                    <FooterItem>
+                    <FooterItem variants= { FooterInfoVariant }>
                         <ItemContainer>
                         <Title> Service Hours </Title>
 
@@ -181,7 +226,7 @@ const Footer = () => {
                         </ItemContainer>
                     </FooterItem>
 
-                    <FooterItem>
+                    <FooterItem variants= { FooterInfoVariant }>
                         <ItemContainer>
                             <Title> Office Hours </Title>
 
