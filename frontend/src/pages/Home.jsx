@@ -122,7 +122,6 @@ const SectionTitle = styled.div`
     font-size: 4rem;
 `
 
-/*
 const LocationContainer = styled.div`
     width: 80%;
     display: flex;
@@ -130,37 +129,22 @@ const LocationContainer = styled.div`
 `
 
 const LocationItem = styled.ul`
+    flex-basis: 25%;
+    width: 50%;
     display: flex;
-    flex-direction: column;
     background-color: red;
     justify-content: space-around;
 `
+
+
 
 const LocationText = styled.span`
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
-`
-*/
-
-const LocationContainer = styled.div`
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
+    font-weight: 900;
 `
 
-const LocationItem = styled.ul`
-    display: flex;
-    flex-direction: column;
-    background-color: red;
-    justify-content: space-around;
-`
-
-const LocationText = styled.span`
-    display: flex;
-    justify-content: space-around;
-    font-size: 2rem;
-`
 
 
 
@@ -230,13 +214,6 @@ const Home = () => {
     ]
 
     /*
-    const locations = [
-        'Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant',
-        'Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake', 
-        'Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights', 
-        'Ortley Beach', 'Island Heights',  'Toms River',
-    ]
-    */
 
     const locations = [
         ['Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant'],
@@ -244,8 +221,14 @@ const Home = () => {
         ['Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights'], 
         ['Ortley Beach', 'Island Heights',  'Toms River'],
     ]
+    */
 
-    
+    const locations = [
+        'Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant',
+        'Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake', 
+        'Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights', 
+        'Ortley Beach', 'Island Heights',  'Toms River',
+    ]
 
     
 
@@ -302,11 +285,11 @@ const Home = () => {
                     <SectionTitle> We Service the Following Locations: </SectionTitle>
                     
                     <LocationContainer>
-                        {/* {locations.map((location, key) =>
+                        {locations.map((location, key) =>
                             <LocationItem>
                                 <LocationText> {location} </LocationText>
                             </LocationItem>
-                        )} */}
+                        )}
                     </LocationContainer>
                 </ServiceAreaContainer>
 
