@@ -122,29 +122,45 @@ const SectionTitle = styled.div`
     font-size: 4rem;
 `
 
+/*
 const LocationContainer = styled.div`
-    width: 100%;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+`
+
+const LocationItem = styled.ul`
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    background-color: red;
+    justify-content: space-around;
 `
-
-const LocationItem = styled.div`
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1 0 25%;
-`
-
-
 
 const LocationText = styled.span`
+    display: flex;
+    justify-content: space-around;
     font-size: 2rem;
 `
+*/
 
+const LocationContainer = styled.div`
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+`
+
+const LocationItem = styled.ul`
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    justify-content: space-around;
+`
+
+const LocationText = styled.span`
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+`
 
 
 
@@ -229,6 +245,10 @@ const Home = () => {
         ['Ortley Beach', 'Island Heights',  'Toms River'],
     ]
 
+    
+
+    
+
     const controls = useAnimation()
 
     const [ref, inView] = useInView()
@@ -280,17 +300,14 @@ const Home = () => {
 
                 <ServiceAreaContainer>
                     <SectionTitle> We Service the Following Locations: </SectionTitle>
-
+                    
                     <LocationContainer>
-                        <LocationItem>
-                            {locations.map((location, key) => 
+                        {/* {locations.map((location, key) =>
+                            <LocationItem>
                                 <LocationText> {location} </LocationText>
-                            )}
-
-                        </LocationItem>
-
+                            </LocationItem>
+                        )} */}
                     </LocationContainer>
-
                 </ServiceAreaContainer>
 
             </InfoContainer>
