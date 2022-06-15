@@ -123,18 +123,20 @@ const SectionTitle = styled.div`
 `
 
 const LocationContainer = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 `
 
 const LocationItem = styled.div`
+    width: 60%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex: 1 0 25%;
 `
 
 
@@ -211,11 +213,20 @@ const Home = () => {
         }
     ]
 
+    /*
     const locations = [
         'Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant',
         'Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake', 
         'Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights', 
         'Ortley Beach', 'Island Heights',  'Toms River',
+    ]
+    */
+
+    const locations = [
+        ['Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant'],
+        ['Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake'], 
+        ['Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights'], 
+        ['Ortley Beach', 'Island Heights',  'Toms River'],
     ]
 
     const controls = useAnimation()
@@ -275,7 +286,9 @@ const Home = () => {
                             {locations.map((location, key) => 
                                 <LocationText> {location} </LocationText>
                             )}
+
                         </LocationItem>
+
                     </LocationContainer>
 
                 </ServiceAreaContainer>
