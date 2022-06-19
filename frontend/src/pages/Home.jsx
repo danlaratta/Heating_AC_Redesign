@@ -8,6 +8,8 @@ import InfoCard from '../components/InfoCard'
 import Info1 from '../images/info1.jpg'
 import Info2 from '../images/info2.jpg'
 import Info3 from '../images/info3.jpg'
+import AboutSection from '../components/AboutSection'
+
 
 // Styled Components
 const Container = styled.div`
@@ -82,8 +84,12 @@ const LandingImage = styled.div`
     background-size: cover;
 `
 
+const Body = styled.div`
+    width: 100%;
+    padding: 5rem 0rem;
+`
+
 const InfoContainer = styled.div`
-    height: 100vh;
     width: 100%;
 `
 
@@ -92,7 +98,6 @@ const CardSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 6rem;
 `
 
 const CardsContainer = styled(motion.div)`
@@ -101,6 +106,7 @@ const CardsContainer = styled(motion.div)`
     align-items: center;
     justify-content: center;
     gap: 5%;
+    padding: 5rem 0rem;
 `
 
 
@@ -110,43 +116,14 @@ const Cards = styled(motion.div)`
     align-items: center;
     justify-content: center;
 `
-const ServiceAreaContainer = styled.div`
+
+const About = styled.div`
     width: 100%;
+    padding: 5rem 0rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 `
-
-const SectionTitle = styled.div`
-    font-size: 4rem;
-`
-
-const LocationContainer = styled.div`
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-`
-
-const LocationItem = styled.ul`
-    flex-basis: 25%;
-    width: 50%;
-    display: flex;
-    background-color: red;
-    justify-content: space-around;
-`
-
-
-
-const LocationText = styled.span`
-    display: flex;
-    justify-content: space-around;
-    font-size: 2rem;
-    font-weight: 900;
-`
-
-
-
 
 // Variants
 const OverlayVariant = {
@@ -213,25 +190,6 @@ const Home = () => {
         }
     ]
 
-    /*
-
-    const locations = [
-        ['Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant'],
-        ['Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake'], 
-        ['Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights'], 
-        ['Ortley Beach', 'Island Heights',  'Toms River'],
-    ]
-    */
-
-    const locations = [
-        'Lavallette', 'Seaside Park', 'Normandy Beach', 'Mantoloking', 'Point Pleasant',
-        'Point Pleasant Beach', 'Bay Head', 'Brielle', 'Spring Lake', 
-        'Manasquan', 'Sea Girt', 'Brick', 'Seaside Heights', 
-        'Ortley Beach', 'Island Heights',  'Toms River',
-    ]
-
-    
-
     const controls = useAnimation()
 
     const [ref, inView] = useInView()
@@ -263,37 +221,31 @@ const Home = () => {
 
             <LandingImage> </LandingImage>
 
-            <InfoContainer>
-                <CardSection>
-                    <CardsContainer
-                        variants={ CardsContainerVariants }
-                        initial= 'hidden'
-                        animate= {controls}
-                        ref={ref}
-                    >
-                        {cardData.map((data, key) => 
-                            <Cards
-                                variants={ CardsVariants }
-                            >
-                                <InfoCard infoImg={data.infoImg} linkText={data.linkText} linkPath={data.linkPath} infoTitle={data.infoTitle} infoDesc={data.infoDesc} />
-                            </Cards>
-                        )}
-                    </CardsContainer>
-                </CardSection>
+            <Body>
+                <InfoContainer>
+                    <CardSection>
+                        <CardsContainer
+                            variants={ CardsContainerVariants }
+                            initial= 'hidden'
+                            animate= {controls}
+                            ref={ref}
+                        >
+                            {cardData.map((data, key) => 
+                                <Cards
+                                    variants={ CardsVariants }
+                                >
+                                    <InfoCard infoImg={data.infoImg} linkText={data.linkText} linkPath={data.linkPath} infoTitle={data.infoTitle} infoDesc={data.infoDesc} />
+                                </Cards>
+                            )}
+                        </CardsContainer>
+                    </CardSection>
 
-                <ServiceAreaContainer>
-                    <SectionTitle> We Service the Following Locations: </SectionTitle>
-                    
-                    <LocationContainer>
-                        {locations.map((location, key) =>
-                            <LocationItem>
-                                <LocationText> {location} </LocationText>
-                            </LocationItem>
-                        )}
-                    </LocationContainer>
-                </ServiceAreaContainer>
+                    <About>
+                        <AboutSection />
+                    </About>
 
-            </InfoContainer>
+                </InfoContainer>
+            </Body>
         </Container>
     )
 }
