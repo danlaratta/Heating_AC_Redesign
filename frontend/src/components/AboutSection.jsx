@@ -8,6 +8,7 @@ import AboutImage from '../images/about-img.jpg'
 const AboutContainer = styled(motion.div)`
     width: 70%;
     display: flex;
+    padding: 2rem 0rem;
 `
 
 const AboutItems = styled(motion.div)`
@@ -18,6 +19,13 @@ const AboutItems = styled(motion.div)`
     align-items: center;
 `
 
+const TextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+`
+
 const AboutTitle = styled.h1`
     font-size: 5rem;
     font-family: 'Lato', sans-serif;
@@ -25,14 +33,15 @@ const AboutTitle = styled.h1`
 `
 
 const AboutText = styled.p`
-    font-size: 2.2rem;
+    width: 90%;
+    font-size: 2rem;
+    font-weight: 400;
     line-height: 4.5rem;
-    width: 85%;
     font-family: 'Lato', sans-serif;
 `
 
 const AboutImg = styled.img`
-    width: 85%;
+    width: 90%;
 `
 
 
@@ -76,15 +85,17 @@ const AboutSection = () => {
         <AboutContainer
             variants={ ContainerVariants }
             initial= 'hidden'
-            animate= {controls}
+            animate={controls}
             ref={ref}
         >
             <AboutItems variants={ AboutVariants }>
-                <AboutTitle> Why Choose Us? </AboutTitle>
+                <TextContainer>
+                    <AboutTitle> Why Choose Us? </AboutTitle>
 
-                <AboutText>
-                    Mills Heating & Air Conditioning is a family owned and operated business with 30 years of experience. We specialize in HVAC products and services. Contact us for complete heating and air conditioning services.
-                </AboutText>
+                    <AboutText>
+                        Mills Heating & Air Conditioning is a family owned and operated business with 30 years of experience. We specialize in HVAC products and services. Contact us for complete heating and air conditioning services.
+                    </AboutText>
+                </TextContainer>
             </AboutItems>
 
             <AboutItems variants={ AboutVariants }>

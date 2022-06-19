@@ -86,7 +86,7 @@ const LandingImage = styled.div`
 
 const Body = styled.div`
     width: 100%;
-    padding: 5rem 0rem;
+    padding: 6rem 0rem;
 `
 
 const InfoContainer = styled.div`
@@ -106,7 +106,7 @@ const CardsContainer = styled(motion.div)`
     align-items: center;
     justify-content: center;
     gap: 5%;
-    padding: 5rem 0rem;
+    padding-bottom: 5rem;
 `
 
 
@@ -123,6 +123,7 @@ const About = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f0f0f0;
 `
 
 // Variants
