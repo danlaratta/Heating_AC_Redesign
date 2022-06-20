@@ -33,7 +33,7 @@ const FooterSocial = styled(motion.div)`
 
 
 const Logo = styled(NavLink)`
-    color: #fff;
+    color: var(--gold);
     font-size: 3.5rem;
     font-family: 'Lato', sans-serif;
     text-decoration: none;

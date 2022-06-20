@@ -31,7 +31,7 @@ const LogoContainer = styled.div`
 `
 
 const Logo = styled(NavLink)`
-    color: #fff;
+    color: ${props => props.textColor ? 'var(--gold)' : '#fff'};
     font-size: 3rem;
     font-family: 'Lato', sans-serif;
     text-decoration: none;
@@ -92,15 +92,14 @@ const NavVariant = {
 const Navbar = () => {
 
     // State Variables
-    const [ navBg, setNavBg] = useState(false)
+    const [ colorChanges, setColorChanges] = useState(false)
 
     // Functions
     const changeNavBG = () => {
         if(window.scrollY >= 80){
-            setNavBg(true)
+            setColorChanges(true)
         }
         else{
-            setNavBg(false)
         }
     }
 
@@ -108,7 +107,7 @@ const Navbar = () => {
     window.addEventListener('scroll', changeNavBG)
 
     return(
-        <NavContainer bgColor={navBg}>
+        <NavContainer bgColor={colorChanges}>
             <Nav
                 variants= { NavVariant }
                 initial= 'hidden'
@@ -118,7 +117,7 @@ const Navbar = () => {
                     variants= { NavVariant }
                 >
                     <LogoContainer>
-                        <Logo to='/'> Mills Heating & AC </Logo>
+                        <Logo to='/' textColor={colorChanges}> Mills Heating & AC </Logo>
                     </LogoContainer>
                 </NavSection>
 

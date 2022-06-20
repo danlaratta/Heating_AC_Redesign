@@ -30,6 +30,7 @@ const AboutTitle = styled.h1`
     font-size: 5rem;
     font-family: 'Lato', sans-serif;
     padding-bottom: 2rem;
+    color: var(--gold);
 `
 
 const AboutText = styled.p`

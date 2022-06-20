@@ -22,7 +22,6 @@ const OverlayContainer = styled.div`
     width: 100%;
     height: 100vh;
     background-color: var(--blueOverlay);
-    /* background-color: rgba(0, 0, 0, 0.55); */
 `
 
 const Overlay = styled(motion.div)`
@@ -47,19 +46,6 @@ const Title = styled(motion.h1)`
     font-weight: 900;
     padding-bottom: 4rem;
 `
-
-/*
-const ServicesLink = styled(motion.NavLink)`
-    color: #000;
-    font-size: 1.8rem;
-    background-color: var(--gold);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    margin-left: 15%;
-    font-family: 'Lato', sans-serif;
-    font-weight: 600;
-`
-*/
 
 const ServicesLink = styled(motion.span)`
     color: #000;
@@ -110,7 +96,6 @@ const CardsContainer = styled(motion.div)`
     padding-bottom: 5rem;
 `
 
-
 const Cards = styled(motion.div)`
     width: 100%;
     display: flex;
@@ -124,16 +109,37 @@ const About = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    color: #fff;
+    background-color: var(--blue);
+    /* background-color: #f0f0f0; */
+`
+
+const ReviewsContainer = styled(motion.div)`
+    width: 100%;
+    padding: 5rem 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const ReviewItems = styled(motion.div)` `
+
+const ReviewTitle = styled.h1`
+    font-size: 4.5rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    padding-bottom: 5rem;
 `
 
 const Reviews = styled.div`
     width: 100%;
-    padding: 5rem 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4.8rem;
 `
+
 
 // Variants
 const OverlayVariant = {
@@ -174,6 +180,43 @@ const CardsVariants = {
     } 
 }
 
+const ReviewContainerVariants = {
+    hidden: { opacity: 0 },
+
+    show: {
+        opacity: 1,
+        transition: { staggerChildren: 0.8 }
+    } 
+}
+
+const ReviewItemsVariants = {
+    hidden: {
+        opacity: 0,
+        y: 100
+    },
+
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1, staggerChildren: 0.8 }
+    } 
+}
+
+const ReviewCardsVariants = {
+    hidden: {
+        opacity: 0,
+        y: 100
+    },
+
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {  duration: 1}
+    } 
+}
+
+
+
 const Home = () => {
 
     const cardData = [
@@ -201,14 +244,21 @@ const Home = () => {
     ]
 
     const controls = useAnimation()
+    const reviewControls = useAnimation()
 
     const [ref, inView] = useInView()
+    const [reviewRef, reviewInView] = useInView()
     
     useEffect(() => {
         if(inView){
             controls.start('show')
         }
-    }, [controls, inView])
+
+        if(reviewInView){
+            reviewControls.start('show')
+        }
+
+    }, [controls, inView, reviewControls, reviewInView])
 
     return(
         <Container>
@@ -241,9 +291,7 @@ const Home = () => {
                             ref={ref}
                         >
                             {cardData.map((data, key) => 
-                                <Cards
-                                    variants={ CardsVariants }
-                                >
+                                <Cards variants={ CardsVariants }>
                                     <InfoCard infoImg={data.infoImg} linkText={data.linkText} linkPath={data.linkPath} infoTitle={data.infoTitle} infoDesc={data.infoDesc} />
                                 </Cards>
                             )}
@@ -253,10 +301,21 @@ const Home = () => {
                     <About>
                         <AboutSection />
                     </About>
+                    
+                    <ReviewsContainer
+                        variants={ ReviewContainerVariants }
+                        initial= 'hidden'
+                        animate= {reviewControls}
+                        ref={reviewRef}
+                    >
+                        <ReviewItems variants={ ReviewItemsVariants }>
+                            <ReviewTitle> Recent Reviews </ReviewTitle>
+                        </ReviewItems>
 
-                    <Reviews>
-                        <ReviewsCard />
-                    </Reviews>
+                        <ReviewItems variants={ ReviewItemsVariants }>
+                            <Reviews variants={ ReviewCardsVariants }> <ReviewsCard /> </Reviews>
+                        </ReviewItems>
+                    </ReviewsContainer>
 
                 </InfoContainer>
             </Body>
