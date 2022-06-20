@@ -9,6 +9,7 @@ import Info1 from '../images/info1.jpg'
 import Info2 from '../images/info2.jpg'
 import Info3 from '../images/info3.jpg'
 import AboutSection from '../components/AboutSection'
+import ReviewsCard from '../components/ReviewsCard'
 
 
 // Styled Components
@@ -124,6 +125,14 @@ const About = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0;
+`
+
+const Reviews = styled.div`
+    width: 100%;
+    padding: 5rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 // Variants
@@ -244,6 +253,10 @@ const Home = () => {
                     <About>
                         <AboutSection />
                     </About>
+
+                    <Reviews>
+                        <ReviewsCard />
+                    </Reviews>
 
                 </InfoContainer>
             </Body>
