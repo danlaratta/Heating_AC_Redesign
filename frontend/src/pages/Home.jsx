@@ -85,6 +85,7 @@ const CardSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15rem 0rem;
 `
 
 const CardsContainer = styled(motion.div)`
@@ -105,7 +106,7 @@ const Cards = styled(motion.div)`
 
 const About = styled.div`
     width: 100%;
-    padding: 5rem 0rem;
+    padding: 15rem 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,7 +117,7 @@ const About = styled.div`
 
 const ReviewsContainer = styled(motion.div)`
     width: 100%;
-    padding: 5rem 0rem;
+    padding: 15rem 0rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,7 +130,7 @@ const ReviewTitle = styled.h1`
     font-size: 4.5rem;
     font-family: 'Lato', sans-serif;
     font-weight: 800;
-    padding-bottom: 5rem;
+    padding-bottom: 7rem;
 `
 
 const Reviews = styled.div`

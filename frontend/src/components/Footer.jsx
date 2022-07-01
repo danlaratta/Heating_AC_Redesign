@@ -169,21 +169,6 @@ const Footer = () => {
     return (
         <Container>
             <FooterContainer>
-                <FooterSocial
-                    variants= { SocialVariant }
-                    initial= 'hidden'
-                    animate= {controls}
-                    ref={ref}
-                >
-                    <Logo to='/'> Mills Heating & AC </Logo>
-
-                    <SocialContainer>
-                        <SocialItem> <SocialLink to='/'> <FaFacebook /> </SocialLink>  </SocialItem>
-                        <SocialItem> <SocialLink to='/'> <TwitterIcon /> </SocialLink> </SocialItem>
-                        <SocialItem> <SocialLink to='/'> <FaGooglePlus /> </SocialLink> </SocialItem>
-                    </SocialContainer>
-                </FooterSocial>
-
                 <FooterInfo
                     variants= { FooterInfoVariant }
                     initial= 'hidden'
@@ -192,7 +177,7 @@ const Footer = () => {
                 >
                     <FooterItem variants= { FooterInfoVariant }>
                         <ItemContainer>
-                            <Title> Contact </Title>
+                            <Title> Mills Heating & AC </Title>
 
                             <FooterDetail>
                                 <DetailItem> <DetailText> (732) 854-0900 </DetailText> </DetailItem>
