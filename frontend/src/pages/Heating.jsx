@@ -126,7 +126,7 @@ const TitleVariant = {
         opacity: 1,
         y: 0,
         transition: { 
-            duration: 1.5, 
+            duration: 1, 
             delay: 1.5,
         }
     }
@@ -137,7 +137,7 @@ const SectionVariants = {
 
     show: {
         opacity: 1,
-        transition: { duration: 1.5, staggerChildren: 1 }
+        transition: { duration: 1.3, staggerChildren: 1 }
     } 
 }
 
@@ -150,7 +150,7 @@ const SectionItemVariants = {
     show: {
         opacity: 1,
         y: 0,
-        transition: {  duration: 1.5}
+        transition: {  duration: 1.3}
     } 
 }
 
