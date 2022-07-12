@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled  from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import LandingImg from '../images/heat-landing.jpg'
-
+import Heat1 from '../images/heat1.jpeg'
+import Heat2 from '../images/heat2.webp'
+import Heat3 from '../images/heat3.jpg'
 
 // Styled Components
 const Container = styled.div`
@@ -13,18 +16,16 @@ const OverlayContainer = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 75vh;
+    height: 100vh;
     background-color: var(--blueOverlay);
-`
-
-const Overlay = styled.div`
-    padding-top: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
-const Title = styled.h1`
+const Overlay = styled.div` `
+
+const Title = styled(motion.h1)`
     color: #fff;
     font-size: 5rem;
     font-family: 'Lato', sans-serif;
@@ -34,7 +35,7 @@ const Title = styled.h1`
 
 const LandingImage = styled.div`
     width: 100%;
-    height: 75vh;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -47,84 +48,147 @@ const LandingImage = styled.div`
 
 const Body = styled.div`
     width: 100%;
+    margin-top: 5rem;
 `
 
-const SectionsContainer = styled.div`
-    width: 100%;
+const Section = styled(motion.div)`
+    width: 70%;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-
+    gap: 5%;
 `
 
-const Section1 = styled.div`
+const BlueBackground = styled.div`
+    width: 100%;
+    background-color: var(--blue);
+`
+
+
+const SectionItem = styled(motion.div)`
+    flex: 1 1 0;
+    display: flex;
+    margin: 8rem 0rem;
+`
+
+const ItemContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    padding: 15rem 0rem;
+    justify-content: center;
 `
 
-const Section1Title = styled.h1`
-    font-size: 4rem;
+const SectionTitle = styled.h1`
+    font-size: 3.5rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    padding-bottom: 3rem;
     color: var(--blue);
-    font-family: 'Lato', sans-serif;
-    font-weight: 800;
-    padding-bottom: 2.5rem;
 `
 
-const Section1Text = styled.p`
+const SectionText = styled.p`
     font-size: 2rem;
-    width: 50%;
-    line-height: 3rem;
     font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 3rem;
+    width: 85%;
 `
 
-
-const Section2 = styled.div`
-    
+const GoldTitle = styled.h1`
+    font-size: 3.5rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    padding-bottom: 3rem;
+    color: var(--gold);
 `
 
-const Section2Container = styled.div`
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+const WhiteText = styled.p`
+    font-size: 2rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 3rem;
+    width: 85%;
+    color: #fff;
 `
 
-const SubTitle = styled.h2`
-    
-`
-
-const SubTextContainer = styled.div`
-    
-`
-
-const SubTextItem = styled.div`
-    
-`
-
-const SubText = styled.span`
-    
-`
-
-const SectionItem = styled.div`
-    
-`
-
-const Section3 = styled.div`
-    
+const SectionImage = styled.img`
+    width: 75%;
 `
 
 // Variants
+const TitleVariant = {
+    hidden: {
+        y: -50,
+        opacity: 0,
+    },
 
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { 
+            duration: 1.5, 
+            delay: 1.5,
+        }
+    }
+}
+
+const SectionVariants = {
+    hidden: { opacity: 0 },
+
+    show: {
+        opacity: 1,
+        transition: { duration: 1.5, staggerChildren: 1 }
+    } 
+}
+
+const SectionItemVariants = {
+    hidden: {
+        opacity: 0,
+        y: -100
+    },
+
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {  duration: 1.5}
+    } 
+}
 
 
 const Heating = () => {
+
+    const control1 = useAnimation()
+    const control2 = useAnimation()
+    const control3 = useAnimation()
+
+    const [ref1, inView1] = useInView()
+    const [ref2, inView2] = useInView()
+    const [ref3, inView3] = useInView()
+    
+    useEffect(() => {
+        if(inView1){
+            control1.start('show')
+        }
+
+        if(inView2){
+            control2.start('show')
+        }
+
+        if(inView3){
+            control3.start('show')
+        }
+
+    }, [control1, inView1, control2, inView2, control3, inView3, ])
+
     return (
         <Container>
             <OverlayContainer>
                 <Overlay>
-                    <Title> Heating </Title>
+                    <Title
+                        variants= {TitleVariant}
+                        initial= 'hidden'
+                        animate= 'show'
+                    > Heating </Title>
 
                 </Overlay>
             </OverlayContainer>
@@ -132,47 +196,71 @@ const Heating = () => {
             <LandingImage> </LandingImage>
 
             <Body>
-                <SectionsContainer>
-                    <Section1>
-                        <Section1Title> Durable and Affordable Heating Units </Section1Title>
+                <Section
+                    variants= {SectionVariants}
+                    initial= 'hidden'
+                    animate= {control1}
+                    ref= {ref1}
+                >
+                    <SectionItem variants={SectionItemVariants}>
+                        <ItemContainer>
+                            <SectionTitle> Affordable Heating Units </SectionTitle>
 
-                        <Section1Text>
-                            We provide top-quality heating units at affordable prices. They have been designed to last long and provide you with maximum comfort. We also offer a <strong> manufacturer's warranty </strong> on all our products. Get in touch with us for top-quality heating products and installation services. Our team will visit your home or office and provide you with all the HVAC services you need.
-                        </Section1Text>
-                    </Section1>
+                            <SectionText>
+                                We provide top-quality heating units at affordable prices. They have been designed to last long and provide you with maximum comfort. We also offer a manufacturer's warranty on all our products. 
+                            </SectionText>
+                        </ItemContainer>
+                    </SectionItem>
 
-                    <Section2>
-                        <SectionItem>
-                            <Section2Container>
-                                <SubTitle> Heating Products and Servic </SubTitle>
+                    <SectionItem variants={SectionItemVariants}>
+                        <SectionImage src={Heat1} />
+                    </SectionItem>
+                </Section>
 
-                                <SubTextContainer>
-                                    <SubTextItem>
-                                        <SubText> • Geothermal </SubText>
-                                        <SubText> • Radiant Heat </SubText>
-                                        <SubText> • Furnaces </SubText>
-                                        <SubText> • Humidifiers </SubText>
-                                    </SubTextItem>
-
-                                    <SubTextItem>
-                                        <SubText> • New Construction Installations </SubText>
-                                        <SubText> • Change-outs Heating Units </SubText>
-                                        <SubText> • House Renovations </SubText>
-                                        <SubText> • Boiler Systems </SubText>
-                                    </SubTextItem>
-                                </SubTextContainer>
-                            </Section2Container>
+                <BlueBackground>
+                    <Section
+                        ref= {ref2}
+                        variants= {SectionVariants}
+                        initial= 'hidden'
+                        animate= {control2}
+                    >
+                        <SectionItem variants={SectionItemVariants}>
+                            <SectionImage src={Heat2} />
                         </SectionItem>
 
-                        <SectionItem>
+                        <SectionItem variants={SectionItemVariants}>
+                            <ItemContainer>
+                                <GoldTitle> Keep Your Home Warm </GoldTitle>
 
+                                <WhiteText>
+                                    Stay warm and comfortable throughout winter with a high-quality heating system from Mills Heating & Air Conditioning. We provide geothermal heating units, boilers, furnaces, and many other HVAC products.
+                                </WhiteText>
+                            </ItemContainer>
                         </SectionItem>
-                    </Section2>
+                    </Section>
+                </BlueBackground>
 
-                    <Section3>
-                        
-                    </Section3>
-                </SectionsContainer>
+                <Section
+                    ref= {ref3}
+                    variants= {SectionVariants}
+                    initial= 'hidden'
+                    animate= {control3}
+                >
+                    <SectionItem variants={SectionItemVariants}>
+                        <ItemContainer>
+                            <SectionTitle> Durable Heating Units </SectionTitle>
+
+                            <SectionText>
+                                Get in touch with us for top-quality heating products and installation services. Our team will visit your home or office and provide you with all the HVAC services you need.
+                            </SectionText>
+                        </ItemContainer>
+                    </SectionItem>
+
+                    <SectionItem variants={SectionItemVariants}>
+                        <SectionImage src={Heat3} />
+                    </SectionItem>
+                </Section>
+                
             </Body>
 
     </Container>

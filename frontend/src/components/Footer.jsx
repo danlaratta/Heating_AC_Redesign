@@ -127,19 +127,6 @@ const ServiceLinks = styled(NavLink)`
 `
 
 // Variants
-const SocialVariant = {
-    hidden: { 
-        opacity: 0,
-        y: -100, 
-    },
-
-    show:{
-        opacity: 1,
-        y: 0,
-        transition: { duration: 1, delay: 0.2}
-    }
-}
-
 const FooterInfoVariant = {
     hidden: { 
         opacity: 0,
