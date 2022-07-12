@@ -48,10 +48,34 @@ const LandingImage = styled.div`
 
 const Body = styled.div`
     width: 100%;
-    margin-top: 5rem;
 `
 
-const Section = styled(motion.div)`
+const MessageContainer = styled(motion.div)`
+    width: 100%;
+    background-color: var(--gold);
+    padding: 1.5rem 0rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const MessageTitle = styled.span`
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    color: var(--blue);
+    padding-bottom: 1rem;
+`
+
+const MessageText = styled.span`
+    font-size: 1.8rem;
+    font-family: 'Lato', sans-serif;
+    color: var(--blue);
+`
+
+const Section = styled.div`
     width: 70%;
     margin: 0 auto;
     display: flex;
@@ -64,7 +88,7 @@ const BlueBackground = styled.div`
 `
 
 
-const SectionItem = styled(motion.div)`
+const SectionItem = styled.div`
     flex: 1 1 0;
     display: flex;
     margin: 8rem 0rem;
@@ -126,59 +150,38 @@ const TitleVariant = {
         opacity: 1,
         y: 0,
         transition: { 
-            duration: 1, 
+            duration: 0.5, 
             delay: 1.5,
         }
     }
 }
 
-const SectionVariants = {
-    hidden: { opacity: 0 },
-
-    show: {
-        opacity: 1,
-        transition: { duration: 1.3, staggerChildren: 1 }
-    } 
-}
-
-const SectionItemVariants = {
+const MessageVariant = {
     hidden: {
         opacity: 0,
-        y: -100
     },
 
     show: {
         opacity: 1,
-        y: 0,
-        transition: {  duration: 1.3}
-    } 
+        transition: { 
+            duration: 1, 
+            delay: 2.5,
+        }
+    }
 }
-
 
 const Heating = () => {
 
     const control1 = useAnimation()
-    const control2 = useAnimation()
-    const control3 = useAnimation()
 
     const [ref1, inView1] = useInView()
-    const [ref2, inView2] = useInView()
-    const [ref3, inView3] = useInView()
     
     useEffect(() => {
         if(inView1){
             control1.start('show')
         }
 
-        if(inView2){
-            control2.start('show')
-        }
-
-        if(inView3){
-            control3.start('show')
-        }
-
-    }, [control1, inView1, control2, inView2, control3, inView3, ])
+    }, [control1, inView1])
 
     return (
         <Container>
@@ -196,13 +199,18 @@ const Heating = () => {
             <LandingImage> </LandingImage>
 
             <Body>
-                <Section
-                    variants= {SectionVariants}
+                <MessageContainer
+                    variants= {MessageVariant}
                     initial= 'hidden'
                     animate= {control1}
                     ref= {ref1}
                 >
-                    <SectionItem variants={SectionItemVariants}>
+                    <MessageTitle> Call Us for a FREE Estimate on AC Systems and Services. </MessageTitle>
+                    <MessageText> Get a manufacturer's warranty on all our air conditioning units. Contact us for more information. We service all makes and models! </MessageText>
+                </MessageContainer>
+
+                <Section>
+                    <SectionItem>
                         <ItemContainer>
                             <SectionTitle> Affordable Heating Units </SectionTitle>
 
@@ -212,23 +220,18 @@ const Heating = () => {
                         </ItemContainer>
                     </SectionItem>
 
-                    <SectionItem variants={SectionItemVariants}>
+                    <SectionItem>
                         <SectionImage src={Heat1} />
                     </SectionItem>
                 </Section>
 
                 <BlueBackground>
-                    <Section
-                        ref= {ref2}
-                        variants= {SectionVariants}
-                        initial= 'hidden'
-                        animate= {control2}
-                    >
-                        <SectionItem variants={SectionItemVariants}>
+                    <Section>
+                        <SectionItem>
                             <SectionImage src={Heat2} />
                         </SectionItem>
 
-                        <SectionItem variants={SectionItemVariants}>
+                        <SectionItem>
                             <ItemContainer>
                                 <GoldTitle> Keep Your Home Warm </GoldTitle>
 
@@ -240,13 +243,8 @@ const Heating = () => {
                     </Section>
                 </BlueBackground>
 
-                <Section
-                    ref= {ref3}
-                    variants= {SectionVariants}
-                    initial= 'hidden'
-                    animate= {control3}
-                >
-                    <SectionItem variants={SectionItemVariants}>
+                <Section>
+                    <SectionItem>
                         <ItemContainer>
                             <SectionTitle> Durable Heating Units </SectionTitle>
 
@@ -256,7 +254,7 @@ const Heating = () => {
                         </ItemContainer>
                     </SectionItem>
 
-                    <SectionItem variants={SectionItemVariants}>
+                    <SectionItem>
                         <SectionImage src={Heat3} />
                     </SectionItem>
                 </Section>
