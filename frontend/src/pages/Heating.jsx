@@ -137,6 +137,7 @@ const WhiteText = styled.p`
 
 const SectionImage = styled.img`
     width: 75%;
+    margin: 0 auto;
 `
 
 // Variants
