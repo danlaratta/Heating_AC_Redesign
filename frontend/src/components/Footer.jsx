@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { NavLink } from 'react-router-dom'
-import { FaFacebook } from "react-icons/fa"
-import { AiFillTwitterCircle } from "react-icons/ai"
-import { FaGooglePlus } from "react-icons/fa"
 
 
 // Styled Components
@@ -24,49 +21,6 @@ const FooterContainer = styled.span`
     gap: 5rem;
 `
 
-const FooterSocial = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`
-
-
-const Logo = styled(NavLink)`
-    color: var(--gold);
-    font-size: 3.5rem;
-    font-family: 'Lato', sans-serif;
-    text-decoration: none;
-    padding-bottom: 2rem;
-
-    &:hover{
-        cursor: pointer;
-    }
-`
-
-const SocialContainer = styled.span`
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-`
-
-const SocialItem = styled.span`
-    color: #fff;
-    font-size: 3.2rem;
-
-    &:hover{
-        transform: scale(1.3);
-        cursor: pointer;
-        color: var(--gold);
-    }
-`
-
-const TwitterIcon = styled(AiFillTwitterCircle)`
-    font-size: 3.8rem;
-`
-
-const SocialLink = styled.span` `
 
 const FooterInfo = styled(motion.div)`
     width: 85%;
