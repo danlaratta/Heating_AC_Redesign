@@ -152,7 +152,7 @@ const TitleVariant = {
         y: 0,
         transition: { 
             duration: 0.5, 
-            delay: 1.5,
+            delay: 0.5,
         }
     }
 }

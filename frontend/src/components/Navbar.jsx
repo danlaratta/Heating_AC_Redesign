@@ -10,7 +10,7 @@ const NavContainer = styled.div`
     z-index: 3;
     position: fixed;
     padding: 2rem;
-    background-color: ${props => props.bgColor ? 'var(--blue)' : 'rgba(0, 0, 0, 0)'};
+    background-color: var(--blue);
     
 `
 
@@ -26,12 +26,10 @@ const NavSection = styled(motion.div)`
     justify-content: flex-start;
 `
 
-const LogoContainer = styled.div`
-    
-`
+const LogoContainer = styled(motion.div)` `
 
 const Logo = styled(NavLink)`
-    color: ${props => props.textColor ? 'var(--gold)' : '#fff'};
+    color: var(--gold);
     font-size: 3rem;
     font-family: 'Lato', sans-serif;
     text-decoration: none;
@@ -49,15 +47,18 @@ const NavItems = styled.ul`
     justify-content: space-evenly;
 `
 
-const LinkContainer = styled(motion.span)`
-    
-`
+const LinkContainer = styled(motion.span)` `
 
 const NavLinks = styled(NavLink)`
+    /* color:  ${props => props.isActive ? 'var(--gold)' : '#fff'}; */
     color: #fff;
     font-size: 2.3rem;
     font-family: 'Lato', sans-serif;
     text-decoration: none;
+
+    &.active {
+        color: var(--gold);
+    }
 
     &:hover{
         color: var(--gold);
@@ -89,25 +90,25 @@ const NavVariant = {
     }
 }
 
-const Navbar = () => {
-
-    // State Variables
-    const [ colorChanges, setColorChanges] = useState(false)
-
-    // Functions
-    const changeNavBG = () => {
-        if(window.scrollY >= 80){
-            setColorChanges(true)
-        }
-        else{
+const LinkVariants = {
+    hover: {
+        scale: 1.05,
+        transition: {
+            duration: 0.4,
+            yoyo: Infinity
         }
     }
+}
 
-    // Event Listeners
-    window.addEventListener('scroll', changeNavBG)
+const Navbar = () => {
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0)
+    }
+    
 
     return(
-        <NavContainer bgColor={colorChanges}>
+        <NavContainer>
             <Nav
                 variants= { NavVariant }
                 initial= 'hidden'
@@ -116,8 +117,8 @@ const Navbar = () => {
                 <NavSection
                     variants= { NavVariant }
                 >
-                    <LogoContainer>
-                        <Logo to='/' textColor={colorChanges}> Mills Heating & AC </Logo>
+                    <LogoContainer variants= {LinkVariants} whileHover= 'hover'>
+                        <Logo to='/'> Mills Heating & AC </Logo>
                     </LogoContainer>
                 </NavSection>
 
@@ -125,10 +126,10 @@ const Navbar = () => {
                     variants= { NavVariant }
                 >
                     <NavItems>
-                        <LinkContainer> <NavLinks to='/Heating'> Heating </NavLinks> </LinkContainer>
-                        <LinkContainer> <NavLinks to='/Air_Conditioning'> Air Conditioning  </NavLinks> </LinkContainer>
-                        <LinkContainer> <NavLinks to='/Services'> Services </NavLinks> </LinkContainer>
-                        <LinkContainer> <NavLinks to='/Contact'> Contact Us  </NavLinks> </LinkContainer>
+                        <LinkContainer variants= {LinkVariants} whileHover= 'hover'> <NavLinks to='/Heating' onClick={scrollToTop}> Heating </NavLinks> </LinkContainer>
+                        <LinkContainer variants= {LinkVariants} whileHover= 'hover'> <NavLinks to='/Air_Conditioning' onClick={scrollToTop}> Air Conditioning  </NavLinks> </LinkContainer>
+                        <LinkContainer variants= {LinkVariants} whileHover= 'hover'> <NavLinks to='/Services' onClick={scrollToTop}> Services </NavLinks> </LinkContainer>
+                        <LinkContainer variants= {LinkVariants} whileHover= 'hover'> <NavLinks to='/Contact' onClick={scrollToTop}> Contact Us  </NavLinks> </LinkContainer>
                     </NavItems>
                 </NavSection>
             </Nav>

@@ -98,12 +98,14 @@ const InfoText = styled.span`
 
 const Bold = styled.span`
     font-weight: 700;
+    font-size: 1.8rem;
     padding-right: 0.5rem;
 `
 
 const SmallerText = styled.div`
     font-size: 1.4rem;
     font-family: 'Lato', sans-serif;
+    padding-top: 0.5rem;
 `
 
 const Map = styled.div`
@@ -135,7 +137,7 @@ const Inputs = styled.input`
     border: 0.2rem solid #e1e1e1;
     border-radius: 0.6rem;
     padding: 1rem;
-    margin-top: 1.5rem;
+    margin: 1rem 0rem;
 `
 
 const ErrorMessage = styled.span`
@@ -172,7 +174,6 @@ const TitleVariant = {
         y: 0,
         transition: { 
             duration: 0.5, 
-            delay: 1.5,
         }
     }
 }
@@ -186,9 +187,6 @@ const SubmitVariant = {
         }
     }
 }
-
-
-
 
 const Contact = () => {
 
@@ -222,7 +220,7 @@ const Contact = () => {
                             <InfoSections>
                                 <TextContainer>
                                     <InfoTitle> Service Hours </InfoTitle>
-                                    <InfoText> <Bold> Mon - Fri </Bold> 7:00am - 4:00pm </InfoText>
+                                    <InfoText> <Bold> Mon - Fri: </Bold> 7:00am - 4:00pm </InfoText>
                                     <InfoText> <Bold> Sat-Sun </Bold> Appointment Only
                                                 <SmallerText> (Summer and Winter seasons for emergency services) </SmallerText>
                                     </InfoText>
@@ -234,8 +232,8 @@ const Contact = () => {
                             <InfoSections>
                                 <TextContainer>
                                     <InfoTitle> Office Hours </InfoTitle>
-                                    <InfoText> <Bold> Mon - Fri </Bold> 8:00am - 4:30pm  </InfoText>
-                                    <InfoText> <Bold> Sat-Sun </Bold> Appointment Only
+                                    <InfoText> <Bold> Mon - Fri: </Bold> 8:00am - 4:30pm  </InfoText>
+                                    <InfoText> <Bold> Sat-Sun: </Bold> Appointment Only
                                                 <SmallerText> (Summer and Winter seasons for emergency services) </SmallerText>
                                     </InfoText> 
 

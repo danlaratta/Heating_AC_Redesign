@@ -154,7 +154,7 @@ const OverlayVariant = {
         x: 0,
         transition: { 
             duration: 1.5, 
-            delay: 1.5,
+            delay: 0.5,
         }
     }
 }
