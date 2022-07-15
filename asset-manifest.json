@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Heating_AC_Redesign/static/css/main.2a08df68.css",
-    "main.js": "/Heating_AC_Redesign/static/js/main.af01f245.js",
+    "main.js": "/Heating_AC_Redesign/static/js/main.afa45a2a.js",
     "static/media/landing-img.jpg": "/Heating_AC_Redesign/static/media/landing-img.7322062b2598755b716e.jpg",
     "static/media/about-img.jpg": "/Heating_AC_Redesign/static/media/about-img.a477c6542c138ce1091d.jpg",
     "static/media/ac3.jpg": "/Heating_AC_Redesign/static/media/ac3.287781e1d7be2791bda0.jpg",
@@ -21,10 +21,10 @@
     "static/media/services-landing.jpg": "/Heating_AC_Redesign/static/media/services-landing.136c75731e988d80e423.jpg",
     "index.html": "/Heating_AC_Redesign/index.html",
     "main.2a08df68.css.map": "/Heating_AC_Redesign/static/css/main.2a08df68.css.map",
-    "main.af01f245.js.map": "/Heating_AC_Redesign/static/js/main.af01f245.js.map"
+    "main.afa45a2a.js.map": "/Heating_AC_Redesign/static/js/main.afa45a2a.js.map"
   },
   "entrypoints": [
     "static/css/main.2a08df68.css",
-    "static/js/main.af01f245.js"
+    "static/js/main.afa45a2a.js"
   ]
 }
