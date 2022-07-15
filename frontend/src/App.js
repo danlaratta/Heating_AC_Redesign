@@ -16,10 +16,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/Heating_AC_Redesign' element={<Home />} />
-        <Route path='/Heating' element={<Heating />} />
-        <Route path='/Air_Conditioning' element={<AirConditioning />} />
-        <Route path='/Services' element={<Services />} />
-        <Route path='/Contact' element={<Contact />} />
+        <Route path='/Heating_AC_Redesign/Heating' element={<Heating />} />
+        <Route path='/Heating_AC_Redesign/Air_Conditioning' element={<AirConditioning />} />
+        <Route path='/Heating_AC_Redesign/Services' element={<Services />} />
+        <Route path='/Heating_AC_Redesign/Contact' element={<Contact />} />
       </Routes>
 
       <Footer />
