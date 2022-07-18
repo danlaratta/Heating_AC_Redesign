@@ -142,6 +142,8 @@ const Inputs = styled.input`
 
 const ErrorMessage = styled.span`
     color: red;
+    font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
 `
 
 const SubmitBtn = styled(motion.input)`
@@ -174,13 +176,14 @@ const TitleVariant = {
         y: 0,
         transition: { 
             duration: 0.5, 
+            delay: 0.5,
         }
     }
 }
 
 const SubmitVariant = {
     hover: {
-        scale: 1.05,
+        scale: 1.1,
         transition: {
             duration: 0.4,
             yoyo: Infinity
@@ -190,12 +193,16 @@ const SubmitVariant = {
 
 const Contact = () => {
 
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(FormSchema)
     })
 
-    const submitForm = (data) => {
-        console.log(data)
+    // Functions
+
+    const submitForm = (e) => {
+
+        e.target.reset()
     }
     
     return (
@@ -249,7 +256,7 @@ const Contact = () => {
                     </Map>
                 </Section>
 
-                <Form>
+                <Form onSubmit={handleSubmit(submitForm)}>
                     <InputsContainer>
                         <Inputs 
                             type="text"
@@ -278,6 +285,13 @@ const Contact = () => {
                             { ...register('phone')}
                         />
                         { errors.phone && <ErrorMessage> {errors.phone.message} </ErrorMessage> }
+
+                        <Inputs 
+                            type="textarea"
+                            placeholder="Your message..."
+                            { ...register('message')}
+                        />
+                        { errors.message && <ErrorMessage> {errors.message.message} </ErrorMessage> }
 
                         <SubmitBtn type="submit" id="submit" value="Submit"
                               variants= {SubmitVariant}

@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
 import styled  from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import LandingImg from '../images/landing-img.jpg'
 import InfoCard from '../components/InfoCard'
-import Info1 from '../images/info1.jpg'
-import Info2 from '../images/info2.jpg'
-import Info3 from '../images/info3.jpg'
 import AboutSection from '../components/AboutSection'
 import ReviewsCard from '../components/ReviewsCard'
+import CardsData from '../Data/CardsArray'
 
 
 // Styled Components
@@ -47,15 +45,22 @@ const Title = styled(motion.h1)`
     padding-bottom: 4rem;
 `
 
-const ServicesLink = styled(motion.span)`
+const ServicesLink = styled(Link)`
     color: #000;
     font-size: 1.8rem;
+    text-decoration: none;
     background-color: var(--gold);
     padding: 1.5rem;
     border-radius: 1rem;
     margin-left: 15%;
     font-family: 'Lato', sans-serif;
     font-weight: 600;
+    
+    &:hover{
+        cursor: pointer;
+        background-color: var(--blue);
+        color: var(--gold);
+    }
 `
 
 const LandingImage = styled.div`
@@ -112,7 +117,6 @@ const About = styled.div`
     align-items: center;
     color: #fff;
     background-color: var(--blue);
-    /* background-color: #f0f0f0; */
 `
 
 const ReviewsContainer = styled(motion.div)`
@@ -220,30 +224,6 @@ const ReviewCardsVariants = {
 
 const Home = () => {
 
-    const cardData = [
-        {
-            infoImg: Info1,
-            linkText: 'Heating',
-            linkPath: '/Heating',
-            infoTitle: 'HVAC Services and Products',
-            infoDesc: 'Whether you want to get your existing HVAC system repaired or a new one installed, contact Mills Heating & Air Conditioning. We have all the products and services to keep your home comfortable.'
-        },
-        {
-            infoImg: Info2,
-            linkText: 'Air Conditioning',
-            linkPath: '/Air_Conditioning',
-            infoTitle: 'Heating and Air Services',
-            infoDesc: "Mills Heating & Air Conditioning is a privately owned and operated business with 30 years of experience. We're fully licensed and insured. Rely on us for the highest quality HVAC products and services."
-        },
-        {
-            infoImg: Info3,
-            linkText: 'Services',
-            linkPath: '/Services',
-            infoTitle: 'Meeting All Your HVAC Needs',
-            infoDesc: "Your satisfaction is our priority. Not only do we install heating or air conditioning unit but also fix any problem that might arise with it. We're an authorized Carrier and Arcoaire HVAC product dealer."
-        }
-    ]
-
     const controls = useAnimation()
     const reviewControls = useAnimation()
 
@@ -275,8 +255,7 @@ const Home = () => {
                         Efficient and Reliable HVAC Installation <br/> and Maintenance Services
                     </Title>
 
-                    <ServicesLink to='/Services' > Get Serviced </ServicesLink>
-                    {/* <ServicesLink to='/Services' variants= { OverlayVariant }> Get Serviced </ServicesLink> */}
+                    <ServicesLink to='/Services'> Get Serviced </ServicesLink>
                 </Overlay>
             </OverlayContainer>
 
@@ -291,7 +270,7 @@ const Home = () => {
                             animate= {controls}
                             ref={ref}
                         >
-                            {cardData.map((data, key) => 
+                            {CardsData.map((data, key) => 
                                 <Cards variants={ CardsVariants }>
                                     <InfoCard infoImg={data.infoImg} linkText={data.linkText} linkPath={data.linkPath} infoTitle={data.infoTitle} infoDesc={data.infoDesc} />
                                 </Cards>

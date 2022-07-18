@@ -50,7 +50,6 @@ const NavItems = styled.ul`
 const LinkContainer = styled(motion.span)` `
 
 const NavLinks = styled(NavLink)`
-    /* color:  ${props => props.isActive ? 'var(--gold)' : '#fff'}; */
     color: #fff;
     font-size: 2.3rem;
     font-family: 'Lato', sans-serif;
@@ -92,7 +91,7 @@ const NavVariant = {
 
 const LinkVariants = {
     hover: {
-        scale: 1.05,
+        scale: 1.1,
         transition: {
             duration: 0.4,
             yoyo: Infinity
